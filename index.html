@@ -105,8 +105,6 @@
             display: block;
         }
 
-        /* BOTÓN MODERN ELIMINADO SEGÚN PEDIDO */
-
         /* --- SECCIONES --- */
         .section { padding: 100px 10%; }
         .section-header { margin-bottom: 60px; }
@@ -133,7 +131,7 @@
         }
         .about-img:hover { filter: grayscale(0); transform: scale(1.02); }
 
-        /* --- RADIOS (CLASES EN VIVO STYLE) --- */
+        /* --- RADIOS (ESTILO EMBEBIDO) --- */
         .grid-cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -143,16 +141,17 @@
         .card-dark {
             background: var(--card-bg);
             border-radius: 12px;
-            padding: 50px;
+            padding: 40px;
             border: 1px solid #222;
             transition: 0.3s;
-            text-align: left;
+            text-align: center;
         }
 
         .card-dark:hover { border-color: var(--primary); background: #161616; }
-        .card-dark i { font-size: 2.5rem; color: var(--primary); margin-bottom: 25px; }
-        .card-dark h3 { font-size: 1.8rem; margin-bottom: 15px; text-transform: uppercase; }
-        
+        .card-dark i { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; }
+        .card-dark h3 { font-size: 1.8rem; margin-bottom: 10px; text-transform: uppercase; }
+        .card-dark p { margin-bottom: 25px; color: var(--text-dim); }
+
         .btn-action {
             color: var(--text-main);
             text-decoration: none;
@@ -164,9 +163,18 @@
             text-transform: uppercase;
             font-size: 0.9rem;
             letter-spacing: 1px;
+             }
+
+        /* CONTENEDOR PARA EL REPRODUCTOR */
+        .player-container {
+            width: 100%;
+            height: 120px;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #000;
         }
 
-        /* --- LIBROS (CONTENIDO PREMIUM STYLE) --- */
+        /* --- LIBROS --- */
         .content-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -219,16 +227,16 @@
         }
         .reflexion-card p { font-style: italic; font-size: 1.2rem; color: var(--text-dim); }
 
-        /* ESTILOS REDES SOCIALES FOOTER */
+        /* REDES SOCIALES FOOTER */
         .footer-socials {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 25px;
             margin-bottom: 20px;
         }
         .footer-socials a {
             color: white;
-            font-size: 1.5rem;
+            font-size: 2.5rem;
             transition: 0.3s;
         }
         .footer-socials a:hover { color: var(--primary); }
@@ -253,7 +261,7 @@
 <body>
 
     <nav>
-        <div class="nav-logo-text">FABIAN DEACON</div>
+        <div class="nav-logo-text">UNIVERSO DEACON</div>
         <div class="nav-links">
             <a href="#bio">Biografía</a>
             <a href="#estaciones">Estaciones</a>
@@ -265,8 +273,8 @@
 
     <header class="hero">
         <div class="hero-content">
-            <span class="top-tag">Elijo creer</span>
-            <h1>FABIAN<br><span>DEACON</span></h1>
+            <span class="top-tag">Fabián Deacon</span>
+            <h1>ELEGIR<br><span>CREER</span></h1>
             <p style="font-size: 1.3rem; color: var(--text-dim); max-width: 600px;">
                 Un espacio dedicado a la evolución de la consciencia, la historia alternativa y la comunicación con propósito.
             </p>
@@ -276,7 +284,7 @@
 
     <section id="bio" class="section">
         <div class="section-header">
-            <h2>Trayectoria</h2>
+            <h2>Biografía</h2>
             <div></div>
         </div>
         <div class="about-container">
@@ -299,20 +307,31 @@
             <div class="card-dark">
                 <i class="fa-solid fa-tower-broadcast"></i>
                 <h3>Radio Holística</h3>
-                <p>Sintonizá el espacio líder en bienestar, espiritualidad y crecimiento personal. Contenido que eleva tu frecuencia.</p>
-                <a href="#" class="btn-action">Sintonizar Ahora <i class="fa-solid fa-arrow-right"></i></a>
+                <p>Sintonizá el espacio líder en bienestar y espiritualidad.</p>
+                <div class="player-container" style="height: auto; background: transparent; padding-top: 70px;">
+        <audio controls style="width: 100%;">
+            <source src="https://radio22.servidorderadio.net:8166/stream" type="audio/mpeg">
+            Tu navegador no soporta el elemento de audio.
+        </audio>
+    </div>
             </div>
             <div class="card-dark">
                 <i class="fa-solid fa-moon"></i>
                 <h3>Radio Desvelo</h3>
-                <p>La compañía perfecta para las noches de reflexión. Historias, música y pensamientos que no te dejarán dormir igual.</p>
-                <a href="#" class="btn-action">Escuchar en Vivo <i class="fa-solid fa-arrow-right"></i></a>
+                <p>La compañía perfecta para las noches de reflexión.</p>
+                <div class="player-container" style="height: auto; background: transparent; padding-top: 70px;">
+                <audio controls style="width: 100%;">
+                     <source src="https://radio22.servidorderadio.net:8162/stream" type="audio/mpeg">
+            Tu navegador no soporta el elemento de audio.
+                 </audio>
+            </div>
             </div>
             <div class="card-dark">
                 <i class="fa-solid fa-microphone-lines"></i>
                 <h3>Podcast Deacon</h3>
                 <p>Entrevistas exclusivas y monólogos sobre los misterios de la historia y el potencial del alma humana.</p>
                 <a href="#" class="btn-action">Explorar Episodios <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
             </div>
         </div>
     </section>
