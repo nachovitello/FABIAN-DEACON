@@ -134,7 +134,9 @@
         /* --- RADIOS (ESTILO EMBEBIDO) --- */
         .grid-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            /* Creamos columnas que se adapten al contenido pero con un máximo */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 400px)); 
+            justify-content: center; /* Centra el bloque de columnas */
             gap: 30px;
         }
 
@@ -164,6 +166,11 @@
             font-size: 0.9rem;
             letter-spacing: 1px;
              }
+
+             audio {
+                filter: invert(90%) hue-rotate(180deg) brightness(1.5);
+                /* Esto hará que el reproductor gris/blanco pase a tonos oscuros/azules */
+            }
 
         /* CONTENEDOR PARA EL REPRODUCTOR */
         .player-container {
@@ -256,6 +263,78 @@
             .section { padding: 80px 5%; }
             h1 { font-size: 3.5rem; }
         }
+
+                /* Ajuste para que el botón de contacto sea visible en móviles */
+        @media (max-width: 768px) {
+            .nav-links { 
+                display: flex !important; /* Forzamos que se vea */
+                gap: 10px; 
+            }
+            .nav-links a:not(.btn-contacto) { 
+                display: none; /* Escondemos los links de texto, dejamos solo el botón */
+            }
+            .nav-logo-text { font-size: 1rem; }
+        }
+
+        /* --- SLIDER DE SPONSORS --- */
+        .sponsor-slider {
+            width: 100%;
+            overflow-x: auto;
+            background: #0a0a0a; /* Un negro un poco más suave que el fondo general */
+            border-radius: 12px;
+            padding: 40px 0; /* Subimos el padding para que se vea más aireado */
+            scrollbar-width: none;
+            display: flex;
+            align-items: center;
+        }
+        /* Esconde la barra de scroll en Chrome/Safari */
+        .sponsor-slider::-webkit-scrollbar {
+            display: none;
+        }
+
+        .sponsor-track {
+            display: flex;
+            align-items: center;
+            width: max-content; /* El ancho se adapta a la cantidad de logos */
+            padding: 0 20px;
+        }
+
+        /* Solo aplicar animación en computadoras (pantallas grandes) */
+        @media (min-width: 769px) {
+            .sponsor-track {
+                animation: scroll-bounce 20s ease-in-out infinite alternate;
+            }
+        }
+
+        /* Ajuste de logos */
+        .sponsor-track img {
+            height: 100px; /* Subimos de 50px a 100px */
+            width: auto;
+            margin: 0 35px; /* Más espacio entre ellos para que respiren */
+            filter: grayscale(1) brightness(1.2) opacity(0.7); /* Les di un poco más de luz */
+            flex-shrink: 0;
+            transition: 0.5s;
+        }
+
+        .sponsor-track img:hover {
+            filter: grayscale(0) brightness(1) opacity(1);
+            transform: scale(1.15); /* Efecto de aumento al pasar el mouse */
+        }
+
+        @keyframes scroll-bounce {
+    0% { transform: translateX(0); }
+    100% { 
+        /* Si tenés muchos logos, quizás necesites subir este valor a -60% o -70% */
+        transform: translateX(-45%); 
+    }
+}
+        /* Estilo para el link de FV Servicios Web */
+        .footer-link {
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .footer-link:hover { color: var(--primary); }
     </style>
 </head>
 <body>
@@ -267,18 +346,20 @@
             <a href="#estaciones">Estaciones</a>
             <a href="#libros">Libros</a>
             <a href="#reflexiones">Reflexiones</a>
-            <a href="https://wa.me/TU_NUMERO" class="btn-contacto">Contacto</a>
+            <!-- Botón con Icono y Link -->
+            <a href="https://wa.me/5493364342771" target="_blank" class="btn-contacto">
+                <i class="fab fa-whatsapp"></i> Contacto
+            </a>
         </div>
     </nav>
 
     <header class="hero">
         <div class="hero-content">
-            <span class="top-tag">Fabián Deacon</span>
-            <h1>ELEGIR<br><span>CREER</span></h1>
+            <span class="top-tag">ELEGIR CREER</span>
+            <h1>FABIAN<br><span>DEACON</span></h1>
             <p style="font-size: 1.3rem; color: var(--text-dim); max-width: 600px;">
                 Un espacio dedicado a la evolución de la consciencia, la historia alternativa y la comunicación con propósito.
             </p>
-            <img src="./images/logo-fabian.jpg" alt="Firma Fabián" class="hero-signature">
         </div>
     </header>
 
@@ -326,12 +407,23 @@
                  </audio>
             </div>
             </div>
-            <div class="card-dark">
-                <i class="fa-solid fa-microphone-lines"></i>
-                <h3>Podcast Deacon</h3>
-                <p>Entrevistas exclusivas y monólogos sobre los misterios de la historia y el potencial del alma humana.</p>
-                <a href="#" class="btn-action">Explorar Episodios <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
+    </div>
+    <div class="card-dark" style="grid-column: 1 / -1; margin-top: 20px;">
+    <i class="fa-solid fa-handshake"></i>
+    <h3>Nuestros Sponsors</h3>
+    <p>Empresas que confían en Universo Deacon</p>
+    <div class="sponsor-slider">
+        <div class="sponsor-track">
+            <img src="./images/logo-fabian.jpg" alt="Sponsor">
+            <img src="./images/logo-radiodesvelo.jpg" alt="Sponsor">
+            <img src="./images/logo-radioholistica.jpg" alt="Sponsor">
+            <img src="./images/logo-akdproducciones.jpg" alt="Sponsor">
+            <img src="./images/logo-fabian.jpg" alt="Sponsor">
+            <img src="./images/logo-radiodesvelo.jpg" alt="Sponsor">
+            <img src="./images/logo-radioholistica.jpg" alt="Sponsor">
+            <img src="./images/logo-akdproducciones.jpg" alt="Sponsor">
+        </div>
+</div>
             </div>
         </div>
     </section>
@@ -378,12 +470,12 @@
 
     <footer>
         <div class="footer-socials">
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-whatsapp"></i></a>
-            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com/universodeacon?igsh=NWZmdzhscGN3ZHNn"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/5493364342771"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://youtube.com/@universodeacon?si=Bca_xzdKfKJmrvJ5"><i class="fab fa-youtube"></i></a>
         </div>
         <img src="./images/logo-akdproducciones.jpg" alt="AKD Producciones" class="footer-logo">
-        <p>DESARROLLADO POR <strong>FV SERVICIOS WEB</strong> © 2026</p>
+        <p>DESARROLLADO POR <a href="https://fvserviciosweb.com.ar" target="_blank" class="footer-link"><strong>FV SERVICIOS WEB</strong></a> © 2026</p>
         <p style="margin-top: 10px; opacity: 0.4;">Todos los derechos reservados - Fabián Deacon</p>
     </footer>
 
