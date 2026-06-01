@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fabián Deacon | Universo Digital</title>
+    <title>Universo Deacon</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
             --primary: #0071e3; /* Azul Eléctrico Premium */
@@ -224,7 +225,7 @@
             transition: 0.3s;
         }
         .btn-buy:hover { background: var(--primary); color: white; }
-
+        
         /* --- REFLEXIONES --- */
         .reflexion-card {
             background: #0a0a0a;
@@ -335,6 +336,107 @@
             transition: 0.3s;
         }
         .footer-link:hover { color: var(--primary); }
+
+        /* --- ESTILOS EXCLUSIVOS PARA LIBROS Y MODAL --- */
+.book-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.btn-sinopsis {
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    flex: 1;
+    transition: 0.3s;
+}
+
+.btn-sinopsis:hover { background: white; color: black; }
+
+.btn-buy-mini {
+    background: var(--primary);
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    flex: 1;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.btn-buy-mini.disabled { background: #333; color: #777; cursor: not-allowed; }
+
+/* MODAL STYLES */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9);
+    backdrop-filter: blur(5px);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: #111;
+    padding: 40px;
+    border: 1px solid #333;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 12px;
+    position: relative;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.close-modal {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    color: #555;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.modal-divider {
+    width: 50px;
+    height: 3px;
+    background: var(--primary);
+    margin: 15px 0 25px 0;
+}
+
+#modalTitle { font-size: 1.8rem; text-transform: uppercase; font-weight: 900; }
+#modalDescription { color: var(--text-dim); line-height: 1.8; font-size: 1.1rem; text-align: justify; }
+
+.btn-close-bottom {
+    margin-top: 30px;
+    background: #222;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 700;
+    width: 100%;
+}
     </style>
 </head>
 <body>
@@ -369,16 +471,16 @@
             <div></div>
         </div>
         <div class="about-container">
-            <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=1974&auto=format&fit=crop" alt="Fabián Deacon" class="about-img">
+            <img src="./images/fabian-perfil.jpeg" alt="Fabián Deacon" class="about-img">
             <div class="about-text">
                 <h3>Comunicación y Consciencia</h3>
-                <p>Fabián Deacon ha consolidado un estilo único en los medios de comunicación, fusionando la reflexión profunda con la calidez del diálogo humano.</p>
-                <p>A través de sus programas y escritos, propone un viaje hacia el interior, desafiando las estructuras convencionales y abriendo portales hacia nuevas formas de entender nuestro tiempo y nuestra historia.</p>
-                <p>Su lema, "Yo elijo creer", no es solo una frase, es la columna vertebral de un movimiento que busca la verdad detrás de lo aparente.</p>
+                <p>Fabián Deacon nació en San Nicolás de los Arroyos, donde despertó su pasión por la escritura y la investigación. Periodista e investigador, encuentra en la literatura un puente para dialogar con la memoria, guiado siempre por los valores de Dios, Patria y Familia.
+                Su trayectoria destaca por un enfoque que integra el rigor de la investigación con la sensibilidad humana, invitando a reflexionar sobre la historia y la trascendencia.
+                En paralelo a su labor literaria, cuenta con un fuerte recorrido radial enfocado en el pensamiento crítico y el crecimiento personal. Es fundador y conductor de las radios online Radio Desvelo y Radio Holística, plataformas desde las cuales difunde sus ideas y contenidos de valor. Este compromiso con la comunicación lo llevó a ser galardonado con el prestigioso Premio ETER.
+                Actualmente reside en Tucumán, donde continúa combinando el periodismo, la radiodifusión y la investigación constante para desarrollar nuevos proyectos editoriales que unan el conocimiento con la evolución de la consciencia.</p>
             </div>
         </div>
     </section>
-
     <section id="estaciones" class="section" style="background: #080808;">
         <div class="section-header">
             <h2>Radio & Streaming</h2>
@@ -414,11 +516,11 @@
     <p>Empresas que confían en Universo Deacon</p>
     <div class="sponsor-slider">
         <div class="sponsor-track">
-            <img src="./images/logo-fabian.jpg" alt="Sponsor">
+            <img src="./images/logo fv servicios web.png" alt="Sponsor">
             <img src="./images/logo-radiodesvelo.jpg" alt="Sponsor">
             <img src="./images/logo-radioholistica.jpg" alt="Sponsor">
             <img src="./images/logo-akdproducciones.jpg" alt="Sponsor">
-            <img src="./images/logo-fabian.jpg" alt="Sponsor">
+            <img src="./images/logo fv servicios web.png" alt="Sponsor">
             <img src="./images/logo-radiodesvelo.jpg" alt="Sponsor">
             <img src="./images/logo-radioholistica.jpg" alt="Sponsor">
             <img src="./images/logo-akdproducciones.jpg" alt="Sponsor">
@@ -429,31 +531,70 @@
     </section>
 
     <section id="libros" class="section">
-        <div class="section-header">
-            <h2>Obra Literaria</h2>
-            <div></div>
-        </div>
-        <div class="content-grid">
-            <div class="book-card">
-                <img src="./images/libro-san-nicolas.jpg" alt="Libro San Nicolas">
-                <div class="content-overlay">
-                    <span class="badge">BEST SELLER</span>
-                    <h3>De San Nicolás a Gibraltar</h3>
-                    <p>Una travesía que desafía el tiempo y la historia conocida.</p>
-                    <a href="#" class="btn-buy">Adquirir en Amazon</a>
-                </div>
-            </div>
-            <div class="book-card">
-                <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=1798&auto=format&fit=crop" alt="Próximo Libro">
-                <div class="content-overlay">
-                    <span class="badge">MUY PRONTO</span>
-                    <h3>El Despertar del Guerrero</h3>
-                    <p>Nuevas reflexiones sobre la fuerza interior y el destino.</p>
-                    <a href="#" class="btn-buy" style="background: #333; color: #777; cursor: not-allowed;">Preventa próximamente</a>
+    <div class="section-header">
+        <h2>Obra Literaria</h2>
+        <div></div>
+    </div>
+    <div class="content-grid">
+        <div class="book-card">
+            <img src="./images/libro-san-nicolas.jpg" alt="De San Nicolás a Gibraltar">
+            <div class="content-overlay">
+                <span class="badge">DISPONIBLE</span>
+                <h3>De San Nicolás a Gibraltar</h3>
+                <div class="book-buttons">
+                    <button class="btn-sinopsis" onclick="openModal('De San Nicolás a Gibraltar', '¿Y si la historia pudiera reescribirse? Una inesperada singularidad ocurrida en San Nicolás transporta a un joven estudiante argentino a un escenario imposible, donde pasado, presente y futuro comienzan a entrelazarse. En una carrera contra el tiempo, descubrirá que una sola decisión puede alterar acontecimientos que marcaron para siempre el destino de una nación. De San Nicolás a Gibraltar es una apasionante novela de historia alternativa, memoria y patriotismo que invita a preguntarse cuánto puede cambiar el mundo cuando alguien se atreve a desafiar lo inevitable.')">Sinopsis</button>
+                    <a href="https://wa.me/5493364342771?text=Hola!%20Estoy%20interesado%20en%20adquirir%20el%20libro%20De%20San%20Nicol%C3%A1s%20a%20Gibraltar" target="_blank" class="btn-buy-mini">Comprar</a>
                 </div>
             </div>
         </div>
-    </section>
+
+        <div class="book-card">
+            <img src="./images/libro-brujas-judios-homosexuales.jpeg" alt="Brujas, Judios y Homosexuales">
+            <div class="content-overlay">
+                <span class="badge">DISPONIBLE</span>
+                <h3>Brujas, Judios y Homosexuales</h3>
+                <div class="book-buttons">
+                    <button class="btn-sinopsis" onclick="openModal('Brujas, Judios y Homosexuales', 'Durante más de tres siglos, la Inquisición dejó una profunda huella en la sociedad brasileña. Judíos, mujeres acusadas de brujería, indígenas, africanos y personas perseguidas por su sexualidad fueron objeto de vigilancia, sospecha y castigo. En esta obra, Fabián Deacon explora el funcionamiento del Santo Oficio en el Brasil colonial, revelando cómo el miedo, la intolerancia y el poder moldearon vidas, comunidades y creencias. Un recorrido histórico imprescindible para comprender uno de los capítulos más complejos y silenciados de la historia brasileña.')">Sinopsis</button>
+                    <a href="https://wa.me/5493364342771?text=Hola!%20Estoy%20interesado%20en%20adquirir%20el%20libro%20Brujas,%20Jud%C3%ADos%20y%20Homosexuales" target="_blank" class="btn-buy-mini">Comprar</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="book-card">
+            <img src="./images/libro-brujas-judios-homosexuales-portugues.jpeg" alt="Bruxas, Judeus y Homossexuais">
+            <div class="content-overlay">
+                <span class="badge">DISPONIBLE</span>
+                <h3>Bruxas, Judeus y Homossexuais</h3>
+                <div class="book-buttons">
+                    <button class="btn-sinopsis" onclick="openModal('Bruxas, Judeus y Homossexuais', 'Durante mais de três séculos, a Inquisição deixou uma profunda marca na sociedade brasileira. Judeus, mulheres acusadas de bruxaria, indígenas, africanos e pessoas perseguidas por sua sexualidade foram objeto de vigilância, suspeita e punição. Nesta obra, Fabián Deacon explora o funcionamento do Santo Ofício no Brasil colonial, revelando como o medo, a intolerância e o poder moldaram vidas, comunidades e crenças. Um percurso histórico imprescindível para compreender um dos capítulos mais complexos e silenciados da história brasileira.')">Sinopsis</button>
+                    <a href="https://wa.me/5493364342771?text=Hola!%20Estoy%20interesado%20en%20adquirir%20el%20libro%20Bruxas,%20Judeus%20y%20Homossexuais" target="_blank" class="btn-buy-mini">Comprar</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="book-card">
+            <img src="./images/libro-espiritualidad-integral" alt="Espiritualidad Integral">
+            <div class="content-overlay">
+                <span class="badge">DISPONIBLE</span>
+                <h3>Espiritualidad Integral</h3>
+                <div class="book-buttons">
+                    <button class="btn-sinopsis" onclick="openModal('Espiritualidad Integral', '¿Y si el verdadero viaje no fuera hacia el exterior, sino hacia tu propio interior?Espiritualidad Integral – Un viaje holístico es una invitación a explorar las múltiples dimensiones del ser humano, integrando cuerpo, mente, emociones y alma. A través de distintas disciplinas y prácticas espirituales, Fabián Deacon propone un recorrido de autoconocimiento, expansión de la conciencia y transformación personal, guiando al lector hacia una comprensión más profunda de sí mismo y de su conexión con el universo.')">Sinopsis</button>
+                    <a href="https://wa.me/5493364342771?text=Hola!%20Estoy%20interesado%20en%20adquirir%20el%20libro%20Espiritualidad%20Integral" target="_blank" class="btn-buy-mini">Comprar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="bookModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <h2 id="modalTitle">Título del Libro</h2>
+        <div class="modal-divider"></div>
+        <p id="modalDescription">Aquí va la sinopsis...</p>
+        <button class="btn-close-bottom" onclick="closeModal()">Cerrar</button>
+    </div>
+</div>
 
     <section id="reflexiones" class="section" style="background: #080808;">
         <div class="section-header">
@@ -472,6 +613,7 @@
         <div class="footer-socials">
             <a href="https://www.instagram.com/universodeacon?igsh=NWZmdzhscGN3ZHNn"><i class="fab fa-instagram"></i></a>
             <a href="https://wa.me/5493364342771"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://wa.me/5493364342771"><i class="fab fa-x-twitter"></i></a>
             <a href="https://youtube.com/@universodeacon?si=Bca_xzdKfKJmrvJ5"><i class="fab fa-youtube"></i></a>
         </div>
         <img src="./images/logo-akdproducciones.jpg" alt="AKD Producciones" class="footer-logo">
@@ -479,5 +621,28 @@
         <p style="margin-top: 10px; opacity: 0.4;">Todos los derechos reservados - Fabián Deacon</p>
     </footer>
 
+
+
+    <script>
+    function openModal(title, description) {
+        document.getElementById('modalTitle').innerText = title;
+        document.getElementById('modalDescription').innerText = description;
+        document.getElementById('bookModal').style.display = 'flex';
+        document.body.style.overflow = 'hidden'; // Bloquea el scroll del fondo
+    }
+
+    function closeModal() {
+        document.getElementById('bookModal').style.display = 'none';
+        document.body.style.overflow = 'auto'; // Habilita el scroll
+    }
+
+    // Cerrar si hacen clic fuera del cuadro blanco
+    window.onclick = function(event) {
+        let modal = document.getElementById('bookModal');
+        if (event.target == modal) {
+            closeModal();
+        }
+    }
+    </script>
 </body>
 </html>
