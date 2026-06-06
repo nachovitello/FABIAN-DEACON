@@ -44,13 +44,35 @@
             border-bottom: 1px solid #222;
         }
 
-        .nav-logo-text { 
-            font-weight: 900; 
-            letter-spacing: 2px; 
-            color: var(--primary); 
-            text-transform: uppercase;
-            font-size: 1.2rem;
+        .nav-logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
         }
+
+        .nav-logo-img {
+            height: 45px;
+            width: auto;
+            border-radius: 4px;
+            object-fit: contain;
+        }
+
+        .nav-logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+
+        .nav-logo-text span {
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: var(--primary);
+            text-transform: uppercase;
+        }
+
+        .nav-logo-text span:first-child { font-size: 0.7rem; }
+        .nav-logo-text span:last-child { font-size: 1.15rem; }
 
         .nav-links {
             display: flex;
@@ -94,7 +116,7 @@
         .hero-content { max-width: 800px; margin-top: 80px; }
         .hero-content span.top-tag { color: var(--primary); letter-spacing: 5px; font-weight: 800; text-transform: uppercase; font-size: 0.9rem; }
         
-        h1 { font-size: clamp(3rem, 8vw, 5.5rem); line-height: 1; font-weight: 800; margin: 10px 0; text-transform: uppercase; }
+        h1 { font-size: clamp(3rem, 8vw, 5.5rem); line-height: 1; font-weight: 800; margin: 10px 0; text-transform: uppercase; color: var(--primary); }
         h1 span { color: var(--primary); }
 
        /* Contenedor para controlar el tamaño y ubicación en el banner */
@@ -212,6 +234,15 @@
 
         .card-dark:hover { border-color: var(--primary); background: #161616; }
         .card-dark i { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; }
+
+        .radio-logo-img {
+            width: 100%;
+            max-width: 220px;
+            height: 130px;
+            object-fit: contain;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
         .card-dark h3 { font-size: 1.8rem; margin-bottom: 10px; text-transform: uppercase; }
         .card-dark p { margin-bottom: 25px; color: var(--text-dim); }
 
@@ -250,7 +281,8 @@
         }
 
         .book-card {
-            height: 500px;
+            aspect-ratio: 2 / 3;
+            height: auto;
             border-radius: 15px;
             overflow: hidden;
             position: relative;
@@ -511,7 +543,13 @@
 <body>
 
     <nav>
-        <div class="nav-logo-text">UNIVERSO DEACON</div>
+        <div class="nav-logo-wrapper">
+            <img src="./images/logo-universodeacon.jpg" alt="Logo Universo Deacon" class="nav-logo-img">
+            <div class="nav-logo-text">
+                <span>UNIVERSO</span>
+                <span>DEACON</span>
+            </div>
+        </div>
         <div class="nav-links">
             <a href="#bio">Biografía</a>
             <a href="#estaciones">Estaciones</a>
@@ -570,7 +608,7 @@
         </div>
         <div class="grid-cards">
             <div class="card-dark">
-                <i class="fa-solid fa-tower-broadcast"></i>
+                <img src="./images/logo-radioholistica.jpg" alt="Radio Holística" class="radio-logo-img">
                 <h3>Radio Holística</h3>
                 <p>Sintonizá el espacio líder en bienestar y espiritualidad.</p>
                 <div class="player-container" style="height: auto; background: transparent; padding-top: 70px;">
@@ -581,7 +619,7 @@
                 </div>
             </div>
             <div class="card-dark">
-                <i class="fa-solid fa-moon"></i>
+                <img src="./images/logo-radiodesvelo.jpg" alt="Radio Desvelo" class="radio-logo-img">
                 <h3>Radio Desvelo</h3>
                 <p>La compañía perfecta para las noches de reflexión.</p>
                 <div class="player-container" style="height: auto; background: transparent; padding-top: 70px;">
